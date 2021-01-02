@@ -1,0 +1,21 @@
+name: FSAB Dokku Deploy
+
+on:
+  push:
+    branches: [$default-branch]
+
+jobs:
+  deploy_dokku_job:
+    runs-on: ubuntu-latest
+    name: Job to deploy latest code to Dokku
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: deploy
+        name: Deploy to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
+        with:
+          ssh-private-key: ${{ secrets.DOKKU_SSH_KEY }}
+          dokku-host: ${{ secrets.DOKKU_INSTANCE_ADDRESS }}
+          app-name: ${{ secrets.DOKKU_APP_NAME }}

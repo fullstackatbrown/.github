@@ -1,0 +1,5 @@
+{
+    "name": "FSAB Dokku Workflow",
+    "description": "FSAB Dokku Deploy workflow template.",
+    "iconName": "docker"
+}
